@@ -14,7 +14,7 @@ while ($line = <FILE>)
       @nT = split(/,/, $arrayT[1]);
       @nN = split(/,/, $arrayN[1]);
 
-###filter the variants by the total read count should be greater than 18 for both the tumor and normal, limit the analysis to only SNPs and the tumor VAF is greater than 0.3
+###filter the variants by the total read count (set as >=18 for both tumor and normal), limit the analysis to only SNVs, and set the tumor VAF (set as >0.3).
 # added VCF Filter PASS check - 02-2023
       if ($nT[0]+$nT[1] >= 18 && $nN[0]+$nN[1] >= 18 && length($array[4])==1 && $arrayT[2]>0.3 && $array[6] eq "PASS")
       {
@@ -33,7 +33,7 @@ while ($line = <FILE>)
             }
             $last = $array[0];
          }
-##########search SNPs along the genome for possible PAM sites. Print to a file the chromosome, position, reference allele, variant allele, tumor VAF, tumor read depth, and whether it is a new PAM site.
+##########search SNPs along the genome for possible PAM sites. Print to a file the chromosome, position, reference allele, variant allele, tumor VAF, tumor read depth, and sequences containing the SNV and potential sgRNA sequence.
          $subseq2 = substr($seq, $array[1]-24, 23);
          $var = lc(substr($seq, $array[1]-1, 1));
          $subseq3 = substr($seq, $array[1], 23);
