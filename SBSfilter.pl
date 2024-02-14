@@ -1,11 +1,13 @@
 #!/usr/bin/perl
 
 $last = 0;
+####read in variant call file
 open (FILE, $ARGV[0]);
 while ($line = <FILE>)
 {
    if ($line !~ /^#/)
    {
+###split the variant file into counts and variant allele fractions for both tumor and normal
       @array = split(/\t/, $line);
       @arrayT = split(/:/, $array[9]);
       @arrayN = split(/:/, $array[10]);
