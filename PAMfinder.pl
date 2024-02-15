@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 $last = 0;
-####read in variants file
+####read in variant call file
 open (FILE, $ARGV[0]);
 while ($line = <FILE>)
 {
@@ -14,7 +14,7 @@ while ($line = <FILE>)
       @nT = split(/,/, $arrayT[1]);
       @nN = split(/,/, $arrayN[1]);
 
-###filter the variants by the total read count (set as >=18 for both tumor and normal), limit the analysis to only SNVs, and set the tumor VAF (set as >0.3).
+###filter the variants by the total read count (set as >=18 for both tumor and normal) and set the tumor VAF (set as >0.3).
 # added VCF Filter PASS check - 02-2023
       if ($nT[0]+$nT[1] >= 18 && $nN[0]+$nN[1] >= 18 && length($array[4])==1 && $arrayT[2]>0.3 && $array[6] eq "PASS")
       {
