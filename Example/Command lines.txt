@@ -1,0 +1,5 @@
+For SBSfilter:
+perl SBSfilter.pl test.vcf > SBSfilter_output.txt
+
+For PAMfinder:
+perl PAMfinder.pl test.vcf > PAMfinder_output.txt
